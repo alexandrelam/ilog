@@ -2,18 +2,25 @@ import Application, { Context } from 'koa';
 import Koa from 'koa';
 import Router from 'koa-router';
 import { configureLogger } from './utils/config';
+import mongoose from 'mongoose';
 
-const app: Application = new Koa();
-const router: Router = new Router();
+const startServer = async () => {
+  await mongoose.connect('mongodb://mongo:27017/book');
 
-configureLogger(app);
+  const app: Application = new Koa();
+  const router: Router = new Router();
 
-router.get('/hello', (ctx: Context) => {
-  ctx.body = 'Hello World';
-});
+  configureLogger(app);
 
-app.use(router.routes()).use(router.allowedMethods());
+  router.get('/hello', (ctx: Context) => {
+    ctx.body = 'Hello World';
+  });
 
-app.listen(3000);
+  app.use(router.routes()).use(router.allowedMethods());
 
-console.log('app started');
+  app.listen(3000);
+
+  console.log('🚀 App started listening on port 3000');
+};
+
+startServer();
