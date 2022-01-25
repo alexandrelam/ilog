@@ -5,10 +5,11 @@ import { Book, BookModel } from '../models/Book';
 export const BookController = (router: Router) => {
   router.get('/book', async (ctx: Context) => {
     const payload = await BookModel.find();
-    ctx.body = JSON.stringify(payload);
+    ctx.body = payload;
   });
 
   router.post('/book', async (ctx: Context) => {
-    console.log(ctx.request.body);
+    const body = ctx.request.body;
+    ctx.body = await BookModel.create(body as Book);
   });
 };
