@@ -1,6 +1,6 @@
 import { Context } from 'koa';
 import Router from 'koa-router';
-import { Book, BookModel } from '../models/Book';
+import { Book, BookModel } from '../models';
 
 export const BookController = (router: Router) => {
   router.get('/book', async (ctx: Context) => {

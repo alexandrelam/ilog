@@ -8,7 +8,7 @@ import {
   configureLogger,
 } from './utils/config';
 import mongoose from 'mongoose';
-import { BookController } from './controller/BookController';
+import { BookController } from './controllers';
 
 const startServer = async () => {
   /* Connect to monbo database */
