@@ -1,4 +1,4 @@
-import Application, { Context } from 'koa';
+import Application from 'koa';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import Router from 'koa-router';
