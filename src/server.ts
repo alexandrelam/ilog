@@ -9,6 +9,7 @@ import {
 } from './utils/config';
 import mongoose from 'mongoose';
 import { BookController } from './controllers';
+import { registerController } from './utils/registerController';
 
 const startServer = async () => {
   /* Connect to monbo database */
@@ -25,7 +26,7 @@ const startServer = async () => {
   configureHeader(app);
   configureLogger(app);
 
-  BookController(router);
+  registerController(router, [BookController]);
 
   app.use(router.routes()).use(router.allowedMethods());
 
