@@ -16,3 +16,28 @@ export const configureLogger = (app: Application) => {
     ctx.set('X-Response-Time', `${ms}ms`);
   });
 };
+
+export const configureError = (app: Application) => {
+  app.use(async (ctx, next) => {
+    try {
+      await next();
+    } catch (err) {
+      err.status = err.statusCode || err.status || 500;
+      ctx.body = err.message;
+      ctx.app.emit('error', err, ctx);
+    }
+  });
+};
+
+export const configureHeader = (app: Application) => {
+  app.use(async (ctx: Context, next: Next) => {
+    ctx.set('Access-Control-Allow-Origin', '*');
+    ctx.set(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    ctx.set('Content-Type', 'Application/json');
+    ctx.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE');
+    await next();
+  });
+};

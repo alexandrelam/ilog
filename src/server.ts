@@ -2,7 +2,11 @@ import Application, { Context } from 'koa';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import Router from 'koa-router';
-import { configureLogger } from './utils/config';
+import {
+  configureError,
+  configureHeader,
+  configureLogger,
+} from './utils/config';
 import mongoose from 'mongoose';
 import { BookController } from './controller/BookController';
 
@@ -16,23 +20,10 @@ const startServer = async () => {
 
   app.use(bodyParser());
 
-  app.use(async (ctx, next) => {
-    ctx.set('Access-Control-Allow-Origin', '*');
-    ctx.set(
-      'Access-Control-Allow-Headers',
-      'Origin, X-Requested-With, Content-Type, Accept'
-    );
-    ctx.set('Content-Type', 'Application/json');
-    ctx.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE');
-    await next();
-  });
-
-  /* Setup logger */
+  /* Configure app */
+  configureError(app);
+  configureHeader(app);
   configureLogger(app);
-
-  router.get('/hello', (ctx: Context) => {
-    ctx.body = 'Hello World';
-  });
 
   BookController(router);
 
