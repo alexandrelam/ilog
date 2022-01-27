@@ -8,7 +8,12 @@ import {
   configureLogger,
 } from './utils/config';
 import mongoose from 'mongoose';
-import { BookController } from './controllers';
+import {
+  AuthorController,
+  BookController,
+  GenreController,
+  WordleController,
+} from './controllers';
 import { registerController } from './utils/registerController';
 
 const startServer = async () => {
@@ -26,7 +31,12 @@ const startServer = async () => {
   configureHeader(app);
   configureLogger(app);
 
-  registerController(router, [BookController]);
+  registerController(router, [
+    BookController,
+    GenreController,
+    AuthorController,
+    WordleController,
+  ]);
 
   app.use(router.routes()).use(router.allowedMethods());
 
