@@ -5,7 +5,7 @@ services:
     volumes:
       - '.:/usr/src/app'
     ports:
-      - '3000:3000'
+      - '4000:4000'
     depends_on:
       - mongo
   mongo:
