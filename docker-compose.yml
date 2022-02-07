@@ -1,9 +1,11 @@
 version: '3.9' # optional since v1.27.0
 services:
   api:
-    build: .
+    build:
+      context: ./packages/api
+      dockerfile: Dockerfile
     volumes:
-      - '.:/usr/src/app'
+      - './packages/api:/usr/src/app'
     ports:
       - '4000:4000'
     depends_on:

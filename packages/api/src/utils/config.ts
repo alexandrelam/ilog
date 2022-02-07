@@ -1,4 +1,5 @@
-import Application, { Context, Next } from 'koa';
+import Application, { Context, HttpError, Next } from 'koa';
+import { Error } from 'mongoose';
 
 export const configureLogger = (app: Application) => {
   // logger
