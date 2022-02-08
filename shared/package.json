@@ -1,0 +1,17 @@
+{
+  "name": "nivclones-ilog-models",
+  "version": "1.0.0",
+  "description": "Models for ilog project",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "Alexandre LAM",
+  "license": "ISC",
+  "dependencies": {
+    "@typegoose/typegoose": "^9.6.2",
+    "typescript": "^4.5.5"
+  }
+}
