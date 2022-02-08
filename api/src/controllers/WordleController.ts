@@ -1,7 +1,7 @@
 import { Context } from 'koa';
 import Router from 'koa-router';
 import { Controller } from '.';
-import { WordleModel } from '../models';
+import { WordleModel } from 'nivclones-ilog-models';
 
 export const WordleController: Controller = (router: Router) => {
   router.get('/wordle/:word', async (ctx: Context) => {

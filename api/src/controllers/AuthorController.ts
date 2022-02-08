@@ -1,9 +1,13 @@
 import { Context } from 'koa';
 import Router from 'koa-router';
 import { Controller } from '.';
-import { Author, AuthorModel } from '../models';
+import { Author, AuthorModel } from 'nivclones-ilog-models';
+import { Producer } from 'kafkajs';
 
-export const AuthorController: Controller = (router: Router) => {
+export const AuthorController: Controller = (
+  router: Router,
+  producer: Producer
+) => {
   router.get('/author', async (ctx: Context) => {
     const payload = await AuthorModel.find();
     ctx.body = payload;
@@ -11,7 +15,13 @@ export const AuthorController: Controller = (router: Router) => {
 
   router.post('/author', async (ctx: Context) => {
     const body: Author = ctx.request.body;
-    ctx.body = await AuthorModel.create(body);
+    const author = new AuthorModel(body);
+    await producer.send({
+      topic: 'create',
+      messages: [{ value: JSON.stringify(author) }],
+    });
+    console.log(`sent: ${JSON.stringify(author)}`);
+    ctx.body = author;
   });
 
   router.put('/author/:id', async (ctx: Context) => {

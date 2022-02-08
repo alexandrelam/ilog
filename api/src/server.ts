@@ -2,6 +2,7 @@ import Application from 'koa';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import Router from 'koa-router';
+import kafka from './kafka';
 import {
   configureError,
   configureHeader,
@@ -31,18 +32,20 @@ const startServer = async () => {
   configureHeader(app);
   configureLogger(app);
 
-  registerController(router, [
-    BookController,
-    GenreController,
-    AuthorController,
-    WordleController,
-  ]);
+  const producer = kafka.producer();
+  await producer.connect();
+
+  registerController(
+    router,
+    [BookController, GenreController, AuthorController, WordleController],
+    producer
+  );
 
   app.use(router.routes()).use(router.allowedMethods());
 
   app.listen(4000);
 
-  console.log('🚀 App started listening on port 3000');
+  console.log('🚀 App started listening on port 4000');
 };
 
 startServer();
