@@ -1,7 +1,7 @@
 import { Context } from 'koa';
 import Router from 'koa-router';
 import { Controller } from '.';
-import { Author, AuthorModel } from '../models';
+import { Author, AuthorModel } from 'nivclones-ilog-models';
 
 export const AuthorController: Controller = (router: Router) => {
   router.get('/author', async (ctx: Context) => {
