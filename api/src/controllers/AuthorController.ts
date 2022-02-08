@@ -2,10 +2,21 @@ import { Context } from 'koa';
 import Router from 'koa-router';
 import { Controller } from '.';
 import { Author, AuthorModel } from 'nivclones-ilog-models';
+import { Producer } from 'kafkajs';
 
-export const AuthorController: Controller = (router: Router) => {
+export const AuthorController: Controller = (
+  router: Router,
+  producer: Producer
+) => {
   router.get('/author', async (ctx: Context) => {
     const payload = await AuthorModel.find();
+
+    await producer.send({
+      topic: 'book.create',
+      messages: [{ value: 'this is a message' }],
+    });
+    console.log('message sent');
+
     ctx.body = payload;
   });
 
