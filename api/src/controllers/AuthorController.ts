@@ -10,19 +10,18 @@ export const AuthorController: Controller = (
 ) => {
   router.get('/author', async (ctx: Context) => {
     const payload = await AuthorModel.find();
-
-    await producer.send({
-      topic: 'book.create',
-      messages: [{ value: 'this is a message' }],
-    });
-    console.log('message sent');
-
     ctx.body = payload;
   });
 
   router.post('/author', async (ctx: Context) => {
     const body: Author = ctx.request.body;
-    ctx.body = await AuthorModel.create(body);
+    const author = new AuthorModel(body);
+    await producer.send({
+      topic: 'create',
+      messages: [{ value: JSON.stringify(author) }],
+    });
+    console.log(`sent: ${JSON.stringify(author)}`);
+    ctx.body = author;
   });
 
   router.put('/author/:id', async (ctx: Context) => {
