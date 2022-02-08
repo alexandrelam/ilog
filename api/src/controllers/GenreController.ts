@@ -1,7 +1,7 @@
 import { Context } from 'koa';
 import Router from 'koa-router';
 import { Controller } from '.';
-import { Genre, GenreModel } from '../models';
+import { Genre, GenreModel } from 'nivclones-ilog-models';
 
 export const GenreController: Controller = (router: Router) => {
   router.get('/genre', async (ctx: Context) => {
