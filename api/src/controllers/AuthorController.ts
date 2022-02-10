@@ -18,7 +18,7 @@ export const AuthorController: Controller = (
     const author = new AuthorModel(body);
     await producer.send({
       topic: 'create',
-      messages: [{ value: JSON.stringify(author) }],
+      messages: [{ value: JSON.stringify({ subject: 'author', body }) }],
     });
     console.log(`sent: ${JSON.stringify(author)}`);
     ctx.body = author;
