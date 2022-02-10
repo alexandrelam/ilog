@@ -1,0 +1,320 @@
+swagger: '2.0'
+info:
+  version: Lost Ark
+  title: ILOG OPEN API
+  description: Documentation de l'api pour le cours d'ILOG
+  termsOfService: Termes d'utilisation
+  contact:
+    name: Alexandre LAM
+    url: https://github.com/alexandrelam
+    email: alexandrelam@outlook.com
+  license:
+    name: MIT
+basePath: '/'
+paths:
+  '/book':
+    get:
+      tags:
+        - Book
+      summary: Get list of all books
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Get list of all books
+          schema:
+            '$ref': '#/definitions/Book'
+    post:
+      tags:
+        - Book
+      summary: Create a new book
+      parameters:
+        - name: 'name'
+          description: 'Book title'
+          required: true
+          type: 'string'
+        - name: 'author'
+          description: 'Book author'
+          required: true
+          schema:
+            '$ref': '#/definitions/Book'
+        - name: 'nbOfPage'
+          description: 'Book number of pages'
+          required: true
+          type: 'integer'
+        - name: 'genre'
+          description: 'Book genre'
+          required: false
+          schema:
+            '$ref': '#/definitions/Genre'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Get the newly created book
+          schema:
+            '$ref': '#/definitions/Book'
+  '/book/{bookID}':
+    put:
+      tags:
+        - Book
+      summary: Update a book
+      produces:
+        - application/json
+      parameters:
+        - name: 'name'
+          description: 'Book title'
+          required: true
+          type: 'string'
+        - name: 'author'
+          description: 'Book author'
+          required: true
+          schema:
+            '$ref': '#/definitions/Book'
+        - name: 'nbOfPage'
+          description: 'Book number of pages'
+          required: true
+          type: 'integer'
+        - name: 'genre'
+          description: 'Book genre'
+          required: false
+          schema:
+            '$ref': '#/definitions/Genre'
+      responses:
+        '200':
+          description: Get the updated book
+          schema:
+            '$ref': '#/definitions/Book'
+    delete:
+      tags:
+        - Book
+      summary: Delete a book
+      parameters:
+        - name: 'bookID'
+          description: 'Book id to delete'
+          required: true
+          type: 'string'
+      produces:
+        - application/json
+      responses:
+        '200':
+          schema:
+            '$ref': '#/definitions/Book'
+  '/author':
+    get:
+      tags:
+        - Author
+      summary: Get list of all authors
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Get list of all authors
+          schema:
+            '$ref': '#/definitions/Author'
+    post:
+      tags:
+        - Author
+      summary: Create a new author
+      parameters:
+        - name: 'name'
+          description: 'author name'
+          required: true
+          type: 'string'
+      description: 'Create a new author via Kafka. The id return by the api call is not the real id.'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Get the newly created author
+          schema:
+            '$ref': '#/definitions/Author'
+  '/author/{authorID}':
+    put:
+      tags:
+        - Author
+      summary: Update an author
+      produces:
+        - application/json
+      parameters:
+        - name: 'authorId'
+          description: 'Author id to delete'
+          required: true
+          type: 'string'
+      responses:
+        '200':
+          description: Get the updated author
+          schema:
+            '$ref': '#/definitions/Author'
+    delete:
+      tags:
+        - Author
+      summary: Delete author
+      parameters:
+        - name: 'authorId'
+          description: 'Author id to delete'
+          required: true
+          type: 'string'
+      produces:
+        - application/json
+      responses:
+        '200':
+          schema:
+            '$ref': '#/definitions/Author'
+  '/genre':
+    get:
+      tags:
+        - Genre
+      summary: Delete author
+      parameters:
+        - name: 'authorId'
+          description: 'Author id to delete'
+          required: true
+          type: 'string'
+      produces:
+        - application/json
+      responses:
+        '200':
+          schema:
+            '$ref': '#/definitions/Genre'
+    post:
+      tags:
+        - Genre
+      summary: Add a new genre
+      parameters:
+        - name: 'name'
+          description: 'Genre name'
+          required: true
+          type: 'string'
+      produces:
+        - application/json
+      responses:
+        '200':
+          schema:
+            '$ref': '#/definitions/Genre'
+  '/genre/{GenreID}':
+    put:
+      tags:
+        - Genre
+      summary: Update a new genre
+      parameters:
+        - name: 'id'
+          description: 'Genre id'
+          required: true
+          type: 'string'
+        - name: 'name'
+          description: 'Genre name'
+          required: true
+          type: 'string'
+      produces:
+        - application/json
+      responses:
+        '200':
+          schema:
+            '$ref': '#/definitions/Genre'
+    delete:
+      tags:
+        - Genre
+      summary: Delete a genre
+      parameters:
+        - name: 'id'
+          description: 'Genre id'
+          required: true
+          type: 'string'
+      produces:
+        - application/json
+      responses:
+        '200':
+          schema:
+            '$ref': '#/definitions/Genre'
+
+  '/wordle':
+    get:
+      tags:
+        - Wordle
+      summary: Get all genres
+      produces:
+        - application/json
+      responses:
+        '200':
+          schema:
+            '$ref': '#/definitions/Wordle'
+  '/wordle/{word}':
+    get:
+      tags:
+        - Wordle
+      summary: Check if a word exist in the database
+      produces:
+        - application/json
+      responses:
+        '200':
+          schema:
+            '$ref': '#/definitions/Wordle'
+
+definitions:
+  Author:
+    type: 'object'
+    required:
+      - 'name'
+    properties:
+      id:
+        type: 'string'
+        example: '6205901e95d74d5c9db5a094'
+      name:
+        type: 'string'
+        example: 'Alexandre'
+      books:
+        type: 'array'
+        items:
+          $ref: '#/definitions/Book'
+    xml:
+      name: 'Author'
+  Genre:
+    type: 'object'
+    required:
+      - 'name'
+    properties:
+      id:
+        type: 'string'
+        example: '6205901e95d74d5c9db5a094'
+      name:
+        type: 'string'
+        example: 'Romance'
+    xml:
+      name: 'Genre'
+  Book:
+    type: 'object'
+    required:
+      - 'name'
+      - 'author'
+      - 'numberOfPage'
+    properties:
+      id:
+        type: 'string'
+        example: '6205901e95d74d5c9db5a094'
+      name:
+        type: 'string'
+        example: 'Harry Potter'
+      author:
+        $ref: '#/definitions/Author'
+      numberOfPage:
+        type: 'number'
+      genre:
+        type: 'array'
+        items:
+          $ref: '#/definitions/Genre'
+    xml:
+      name: 'Book'
+  Wordle:
+    type: 'object'
+    required:
+      - 'word'
+    properties:
+      id:
+        type: 'string'
+        example: '6205901e95d74d5c9db5a094'
+      word:
+        type: 'string'
+        example: 'Harry Potter'
+    xml:
+      name: 'Wordle'

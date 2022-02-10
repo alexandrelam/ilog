@@ -16,6 +16,8 @@ import {
   WordleController,
 } from './controllers';
 import { registerController } from './utils/registerController';
+import { koaSwagger } from 'koa2-swagger-ui';
+import yamljs from 'yamljs';
 
 const startServer = async () => {
   /* Connect to monbo database */
@@ -26,6 +28,12 @@ const startServer = async () => {
   const router: Router = new Router();
 
   app.use(bodyParser());
+
+  const spec = yamljs.load('./openapi.yaml');
+  router.get(
+    '/docs',
+    koaSwagger({ routePrefix: false, swaggerOptions: { spec } })
+  );
 
   /* Configure app */
   configureError(app);
