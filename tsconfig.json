@@ -70,7 +70,8 @@
   },
   "include": [
       "./api/**/*",
-      "./shared/models/**/*"
+      "./shared/models/**/*",
+      "./write-service/src/**/*"
   ],
   "exclude": [
     "tests"
