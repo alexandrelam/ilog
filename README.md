@@ -179,6 +179,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 Alexandre LAM - alexandrelam@outlook.com
+
 Thomas BERNARD - thomas.bernard@etu.imt-nord-europe.fr
 
 Project Link: [https://github.com/alexandrelam/ilog](https://github.com/alexandrelam/ilog)
