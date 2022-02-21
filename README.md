@@ -86,35 +86,43 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+In this section you will learn how to get the project up and running.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+You need a few softwares before things works properly.
 
-- npm
+- npm with node
+
   ```sh
   npm install npm@latest -g
   ```
 
+- docker (and don't forget docker-compose if you are on linux)
+
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+_Below is an example of how you can install the dependancies and set up the app._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
    ```
-3. Install NPM packages
+2. Install npm dependancies for the different services
    ```sh
-   npm install
+   cd api && npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+   ```sh
+   cd .. && cd write-service && npm install
    ```
+3. docker-compose up!
+
+   ```sh
+   docker-compose up
+   ```
+
+   _Make sure no other app are running on port 4000, 9000, 2181, 27017, 29092._
+   _If the app is not starting because of kafka not initiating fast enough just shutdown the servers and docker-compose back up again._
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -122,9 +130,9 @@ _Below is an example of how you can instruct your audience on installing and set
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Use Postman to test the api! (https://www.postman.com/)
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the [OpenAPI documentation](http://localhost:4000/docs)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -132,13 +140,10 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-  - [ ] Chinese
-  - [ ] Spanish
+- [x] Write a cool readme
+- [ ] Await group 1 to contact us and build something cool
+- [ ] Make a better seeder for wordle
+- [ ] Create a banking service for CQRS because it's a better example than authors!
 
 See the [open issues](https://github.com/alexandrelam/ilog/issues) for a full list of proposed features (and known issues).
 
@@ -173,9 +178,10 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Alexandre LAM - alexandrelam@outlook.com
+Thomas BERNARD - thomas.bernard@etu.imt-nord-europe.fr
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/alexandrelam/ilog](https://github.com/alexandrelam/ilog)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -185,14 +191,8 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
-- [Choose an Open Source License](https://choosealicense.com)
-- [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-- [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-- [Malven's Grid Cheatsheet](https://grid.malven.co/)
-- [Img Shields](https://shields.io)
-- [GitHub Pages](https://pages.github.com)
-- [Font Awesome](https://fontawesome.com)
-- [React Icons](https://react-icons.github.io/react-icons/search)
+- [Typegoose](https://github.com/typegoose/typegoose)
+- [Koa with typescript](https://medium.com/@masnun/typescript-with-koa-part-1-c4843f16a4ad)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
