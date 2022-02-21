@@ -5,7 +5,6 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -106,7 +105,7 @@ _Below is an example of how you can install the dependancies and set up the app.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/alexandrelam/ilog
    ```
 2. Install npm dependancies for the different services
    ```sh
@@ -200,16 +199,14 @@ Use this space to list resources you find helpful and would like to give credit 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/alexandrelam/ilog.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
 [contributors-url]: https://github.com/alexandrelam/ilog/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/alexandrelam/ilog.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
 [forks-url]: https://github.com/alexandrelam/ilog/network/members
-[stars-shield]: https://img.shields.io/github/stars/alexandrelam/ilog.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
 [stars-url]: https://github.com/alexandrelam/ilog/stargazers
 [issues-shield]: https://img.shields.io/github/issues/alexandrelam/ilog.svg?style=for-the-badge
 [issues-url]: https://github.com/alexandrelam/ilog/issues
-[license-shield]: https://img.shields.io/github/license/alexandrelam/ilog.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/alexandrelam/ilog/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: https://user-images.githubusercontent.com/25727549/153517319-3606ffec-5b77-46db-b133-595e0222ea18.png
