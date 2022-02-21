@@ -5,7 +5,6 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -106,7 +105,7 @@ _Below is an example of how you can install the dependancies and set up the app.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/alexandrelam/ilog
    ```
 2. Install npm dependancies for the different services
    ```sh
@@ -208,8 +207,6 @@ Use this space to list resources you find helpful and would like to give credit 
 [stars-url]: https://github.com/alexandrelam/ilog/stargazers
 [issues-shield]: https://img.shields.io/github/issues/alexandrelam/ilog.svg?style=for-the-badge
 [issues-url]: https://github.com/alexandrelam/ilog/issues
-[license-shield]: https://img.shields.io/github/license/alexandrelam/ilog.svg?style=for-the-badge
-[license-url]: https://github.com/alexandrelam/ilog/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license-url]: https://github.com/alexandrelam/ilog/blob/main/LICENSE
 [product-screenshot]: https://user-images.githubusercontent.com/25727549/153517319-3606ffec-5b77-46db-b133-595e0222ea18.png
