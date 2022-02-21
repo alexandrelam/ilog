@@ -199,14 +199,14 @@ Use this space to list resources you find helpful and would like to give credit 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/alexandrelam/ilog.svg?style=for-the-badge
 [contributors-url]: https://github.com/alexandrelam/ilog/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/alexandrelam/ilog.svg?style=for-the-badge
 [forks-url]: https://github.com/alexandrelam/ilog/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/alexandrelam/ilog.svg?style=for-the-badge
 [stars-url]: https://github.com/alexandrelam/ilog/stargazers
 [issues-shield]: https://img.shields.io/github/issues/alexandrelam/ilog.svg?style=for-the-badge
 [issues-url]: https://github.com/alexandrelam/ilog/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/alexandrelam/ilog/blob/master/LICENSE.txt
+[license-url]: https://github.com/alexandrelam/ilog/blob/main/LICENSE
 [product-screenshot]: https://user-images.githubusercontent.com/25727549/153517319-3606ffec-5b77-46db-b133-595e0222ea18.png
