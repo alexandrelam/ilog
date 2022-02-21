@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/alexandrelam/ilog">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://user-images.githubusercontent.com/25727549/155026814-3c2421c2-099c-484e-aeba-fd0fc2c8d25c.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">ILOG: Koa Project</h3>
