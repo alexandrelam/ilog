@@ -9,12 +9,12 @@ import {
 } from 'nivclones-ilog-models';
 
 export const BookController: Controller = (router: Router) => {
-  router.get('/book', async (ctx: Context) => {
+  router.get('/books', async (ctx: Context) => {
     const payload = await BookModel.find();
     ctx.body = payload;
   });
 
-  router.get('/book/:bookID/addgenre/:genreID', async (ctx: Context) => {
+  router.get('/books/:bookID/addgenre/:genreID', async (ctx: Context) => {
     const bookID = ctx.params.bookID;
     const genreID = ctx.params.genreID;
     const book = await BookModel.findById(bookID);
@@ -23,20 +23,20 @@ export const BookController: Controller = (router: Router) => {
     ctx.body = book;
   });
 
-  router.post('/book', async (ctx: Context) => {
+  router.post('/books', async (ctx: Context) => {
     const body: Book = ctx.request.body;
     const authorId: string = ctx.request.body.author;
     body.author = await AuthorModel.findById(authorId);
     ctx.body = await BookModel.create(body);
   });
 
-  router.put('/book/:id', async (ctx: Context) => {
+  router.put('/books/:id', async (ctx: Context) => {
     const body: Book = ctx.request.body;
     const id: string = ctx.params.id;
     ctx.body = await BookModel.findByIdAndUpdate(id, body);
   });
 
-  router.delete('/book/:id', async (ctx: Context) => {
+  router.delete('/books/:id', async (ctx: Context) => {
     const id: string = ctx.params.id;
     ctx.body = await BookModel.findByIdAndDelete(id);
   });
