@@ -100,6 +100,25 @@ paths:
         '200':
           schema:
             '$ref': '#/definitions/Book'
+  '/books/{bookID}/genres':
+    get:
+      tags:
+        - Book
+      summary: Get list of all genres from a book
+      parameters:
+        - name: 'bookID'
+          description: 'Book id'
+          required: true
+          type: 'string'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Get list of all genres from a book
+          schema:
+            type: 'array'
+            items:
+              $ref: '#/definitions/Genre'
   '/authors':
     get:
       tags:
@@ -161,6 +180,25 @@ paths:
         '200':
           schema:
             '$ref': '#/definitions/Author'
+  '/authors/{authorID}/books':
+    get:
+      tags:
+        - Author
+      summary: Get list of all books from a author
+      parameters:
+        - name: 'authorID'
+          description: 'Author id'
+          required: true
+          type: 'string'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Get list of all books from a author
+          schema:
+            type: 'array'
+            items:
+              '$ref': '#/definitions/Book'
   '/genres':
     get:
       tags:
@@ -176,7 +214,7 @@ paths:
       responses:
         '200':
           schema:
-            '$ref': '#/definitions/Genre'
+            $ref: '#/definitions/Genre'
     post:
       tags:
         - Genre
