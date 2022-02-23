@@ -23,6 +23,11 @@ export const BookController: Controller = (router: Router) => {
     ctx.body = book;
   });
 
+  router.get('/authors/:authorID/books', async (ctx: Context) => {
+    const authorID = ctx.params.authorID;
+    ctx.body = await AuthorModel.findById(authorID, 'books');
+  });
+
   router.post('/books', async (ctx: Context) => {
     const body: Book = ctx.request.body;
     const authorId: string = ctx.request.body.author;
