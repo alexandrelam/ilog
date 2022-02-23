@@ -31,6 +31,11 @@ export const BookController: Controller = (router: Router) => {
   router.post('/books', async (ctx: Context) => {
     const body: Book = ctx.request.body;
     const authorId: string = ctx.request.body.author;
+    const genresID: [string] = ctx.request.body.genres;
+    const genres = await Promise.all(
+      genresID.map(async (genreid) => await GenreModel.findById(genreid))
+    );
+    body.genres = genres;
     body.author = await AuthorModel.findById(authorId);
     ctx.body = await BookModel.create(body);
   });
@@ -38,6 +43,13 @@ export const BookController: Controller = (router: Router) => {
   router.put('/books/:id', async (ctx: Context) => {
     const body: Book = ctx.request.body;
     const id: string = ctx.params.id;
+    const authorId: string = ctx.request.body.author;
+    const genresID: [string] = ctx.request.body.genres;
+    const genres = await Promise.all(
+      genresID.map(async (genreid) => await GenreModel.findById(genreid))
+    );
+    body.genres = genres;
+    body.author = await AuthorModel.findById(authorId);
     ctx.body = await BookModel.findByIdAndUpdate(id, body);
   });
 
