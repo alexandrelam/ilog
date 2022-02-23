@@ -14,15 +14,6 @@ export const BookController: Controller = (router: Router) => {
     ctx.body = payload;
   });
 
-  router.get('/books/:bookID/addgenre/:genreID', async (ctx: Context) => {
-    const bookID = ctx.params.bookID;
-    const genreID = ctx.params.genreID;
-    const book = await BookModel.findById(bookID);
-    const genre = await GenreModel.findById(genreID);
-    await book.update({ genres: [...book.genres, genre] });
-    ctx.body = book;
-  });
-
   router.get('/authors/:authorID/books', async (ctx: Context) => {
     const authorID = ctx.params.authorID;
     ctx.body = await AuthorModel.findById(authorID, 'books');
@@ -36,8 +27,12 @@ export const BookController: Controller = (router: Router) => {
       genresID.map(async (genreid) => await GenreModel.findById(genreid))
     );
     body.genres = genres;
-    body.author = await AuthorModel.findById(authorId);
-    ctx.body = await BookModel.create(body);
+    const author = await AuthorModel.findById(authorId);
+    body.author = author;
+    const createdBook = await BookModel.create(body);
+    author.books = [...author.books, createdBook.id];
+    await author.save();
+    ctx.body = createdBook;
   });
 
   router.put('/books/:id', async (ctx: Context) => {
