@@ -4,10 +4,6 @@ info:
   title: ILOG OPEN API
   description: Documentation de l'api pour le cours d'ILOG
   termsOfService: Termes d'utilisation
-  contact:
-    name: Alexandre LAM
-    url: https://github.com/alexandrelam
-    email: alexandrelam@outlook.com
   license:
     name: MIT
 basePath: '/'
