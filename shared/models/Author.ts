@@ -1,12 +1,12 @@
-import { prop, getModelForClass } from '@typegoose/typegoose';
+import { prop, getModelForClass, Ref } from '@typegoose/typegoose';
 import { Book } from './Book';
 
 export class Author {
   @prop({ required: true })
   public name: string;
 
-  @prop()
-  public books?: Book[];
+  @prop({ ref: () => Book })
+  public books?: Ref<Book>[];
 }
 
 export const AuthorModel = getModelForClass(Author);
