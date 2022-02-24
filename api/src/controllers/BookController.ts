@@ -5,22 +5,22 @@ import bookService from '../services/BookService';
 
 export const BookController: Controller = (router: Router) => {
   router.get('/books', async (ctx: Context) => {
-    ctx.body = bookService.show();
+    ctx.body = await bookService.show();
   });
 
   router.get('/authors/:authorID/books', async (ctx: Context) => {
-    ctx.body = bookService.showBooks(ctx);
+    ctx.body = await bookService.showBooks(ctx);
   });
 
   router.post('/books', async (ctx: Context) => {
-    ctx.body = bookService.create(ctx);
+    ctx.body = await bookService.create(ctx);
   });
 
   router.put('/books/:id', async (ctx: Context) => {
-    ctx.body = bookService.update(ctx);
+    ctx.body = await bookService.update(ctx);
   });
 
   router.delete('/books/:id', async (ctx: Context) => {
-    ctx.body = bookService.delete(ctx);
+    ctx.body = await bookService.delete(ctx);
   });
 };

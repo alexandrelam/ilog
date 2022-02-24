@@ -9,18 +9,18 @@ export const AuthorController: Controller = (
   producer: Producer
 ) => {
   router.get('/authors', async (ctx: Context) => {
-    ctx.body = authorService.show();
+    ctx.body = await authorService.show();
   });
 
   router.post('/authors', async (ctx: Context) => {
-    ctx.body = authorService.create(ctx, producer);
+    ctx.body = await authorService.create(ctx, producer);
   });
 
   router.put('/authors/:id', async (ctx: Context) => {
-    ctx.body = authorService.update(ctx);
+    ctx.body = await authorService.update(ctx);
   });
 
   router.delete('/authors/:id', async (ctx: Context) => {
-    ctx.body = authorService.delete(ctx);
+    ctx.body = await authorService.delete(ctx);
   });
 };
