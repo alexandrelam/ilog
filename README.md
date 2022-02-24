@@ -107,14 +107,18 @@ _Below is an example of how you can install the dependancies and set up the app.
    ```sh
    git clone https://github.com/alexandrelam/ilog
    ```
-2. Install npm dependancies for the different services
+2. Install npm dependancies for the whole repo
+   ```sh
+   npm install
+   ```
+3. Install npm dependancies for the different services
    ```sh
    cd api && npm install
    ```
    ```sh
    cd .. && cd write-service && npm install
    ```
-3. docker-compose up!
+4. docker-compose up!
 
    ```sh
    docker-compose up
