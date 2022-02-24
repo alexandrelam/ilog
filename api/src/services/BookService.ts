@@ -5,6 +5,8 @@ import {
   GenreModel,
 } from 'nivclones-ilog-models';
 import { Context } from 'koa';
+import { send } from '../kafka';
+import { Producer } from 'kafkajs';
 
 export default {
   show: async function () {
@@ -16,7 +18,7 @@ export default {
     return await AuthorModel.findById(authorID, 'books');
   },
 
-  create: async function (ctx: Context) {
+  create: async function (ctx: Context, producer: Producer) {
     const body: Book = ctx.request.body;
     const authorId: string = ctx.request.body.author;
     const genresID: [string] = ctx.request.body.genres;
@@ -26,13 +28,14 @@ export default {
     body.genres = genres;
     const author = await AuthorModel.findById(authorId);
     body.author = author;
-    const createdBook = await BookModel.create(body);
+    const createdBook = new BookModel(body);
     author.books = [...author.books, createdBook.id];
     await author.save();
+    send(producer, 'book.create', body);
     return createdBook;
   },
 
-  update: async function (ctx: Context) {
+  update: async function (ctx: Context, producer: Producer) {
     const body: Book = ctx.request.body;
     const id: string = ctx.params.id;
     const authorId: string = ctx.request.body.author;
@@ -42,11 +45,13 @@ export default {
     );
     body.genres = genres;
     body.author = await AuthorModel.findById(authorId);
-    return await BookModel.findByIdAndUpdate(id, body);
+    send(producer, 'book.update', { id, ...body });
+    return new BookModel(body);
   },
 
-  delete: async function (ctx: Context) {
+  delete: async function (ctx: Context, producer: Producer) {
     const id: string = ctx.params.id;
-    return await BookModel.findByIdAndDelete(id);
+    send(producer, 'book.delete', { id });
+    return await BookModel.findById(id);
   },
 };

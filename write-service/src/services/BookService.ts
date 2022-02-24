@@ -1,15 +1,6 @@
-import { KafkaMessage } from 'kafkajs';
+import { Operation } from '../utils';
 
-export function parseMessage(message: KafkaMessage) {
-  return {
-    subject: JSON.parse(message.value.toString()).subject,
-    body: JSON.parse(message.value.toString()).body,
-  };
-}
-
-export type Operation = 'create' | 'update' | 'delete';
-
-export async function handleWrite(model, operation: Operation, body) {
+export default async function (model, operation: Operation, body) {
   console.log(`Operation : ${operation}`);
   switch (operation) {
     case 'create':

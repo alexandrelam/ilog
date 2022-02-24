@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import kafka from './kafka';
-import AuthorService from './services/AuthorService';
-import { parseMessage } from './utils';
+import { AuthorModel, BookModel, GenreModel } from 'nivclones-ilog-models';
+import { handleWrite, parseMessage } from './utils';
 import { Operation } from './utils';
 
 const startServer = async () => {
@@ -20,7 +20,14 @@ const startServer = async () => {
       const operation: Operation = subject.split('.')[1];
       switch (modelName) {
         case 'author':
-          AuthorService(operation, body);
+          handleWrite(AuthorModel, operation, body);
+          break;
+        case 'book':
+          handleWrite(BookModel, operation, body);
+          break;
+        case 'genre':
+          handleWrite(GenreModel, operation, body);
+          break;
       }
     },
   });
