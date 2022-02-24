@@ -1,5 +1,7 @@
 import { GenreModel, Genre, BookModel } from 'nivclones-ilog-models';
 import { Context } from 'koa';
+import { Producer } from 'kafkajs';
+import { send } from '../kafka';
 
 export default {
   show: async function () {
@@ -11,19 +13,22 @@ export default {
     return await BookModel.findById(id, 'genres');
   },
 
-  create: async function (ctx: Context) {
+  create: async function (ctx: Context, producer: Producer) {
     const body: Genre = ctx.request.body;
-    return await GenreModel.create(body);
+    send(producer, 'genre.create', body);
+    return new GenreModel(body);
   },
 
-  update: async function (ctx: Context) {
+  update: async function (ctx: Context, producer: Producer) {
     const body: Genre = ctx.request.body;
     const id: string = ctx.params.id;
-    return await GenreModel.findByIdAndUpdate(id, body);
+    send(producer, 'genre.update', { id, ...body });
+    return await GenreModel.findById(id, body);
   },
 
-  delete: async function (ctx: Context) {
+  delete: async function (ctx: Context, producer: Producer) {
     const id: string = ctx.params.id;
-    return await GenreModel.findByIdAndDelete(id);
+    send(producer, 'genre.delete', { id });
+    return await GenreModel.findById(id);
   },
 };

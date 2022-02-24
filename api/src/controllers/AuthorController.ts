@@ -17,10 +17,10 @@ export const AuthorController: Controller = (
   });
 
   router.put('/authors/:id', async (ctx: Context) => {
-    ctx.body = await authorService.update(ctx);
+    ctx.body = await authorService.update(ctx, producer);
   });
 
   router.delete('/authors/:id', async (ctx: Context) => {
-    ctx.body = await authorService.delete(ctx);
+    ctx.body = await authorService.delete(ctx, producer);
   });
 };

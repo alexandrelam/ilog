@@ -1,6 +1,7 @@
 import { Author, AuthorModel } from 'nivclones-ilog-models';
 import { Context } from 'koa';
 import { Producer } from 'kafkajs';
+import { send } from '../kafka';
 
 export default {
   show: async function () {
@@ -10,22 +11,22 @@ export default {
   create: async function (ctx: Context, producer: Producer) {
     const body: Author = ctx.request.body;
     const author = new AuthorModel(body);
-    await producer.send({
-      topic: 'create',
-      messages: [{ value: JSON.stringify({ subject: 'author', body }) }],
-    });
-    console.log(`sent: ${JSON.stringify(author)}`);
+    send(producer, 'author.create', body);
     return author;
   },
 
-  update: async function (ctx: Context) {
+  update: async function (ctx: Context, producer: Producer) {
     const body: Author = ctx.request.body;
     const id: string = ctx.params.id;
-    return await AuthorModel.findByIdAndUpdate(id, body);
+    send(producer, 'author.update', { id, ...body });
+    const response = new AuthorModel(body);
+    response._id = id;
+    return response;
   },
 
-  delete: async function (ctx: Context) {
+  delete: async function (ctx: Context, producer: Producer) {
     const id: string = ctx.params.id;
-    return await AuthorModel.findByIdAndDelete(id);
+    send(producer, 'author.delete', { id });
+    return await AuthorModel.findById(id);
   },
 };
