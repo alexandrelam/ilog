@@ -1,8 +1,7 @@
 import mongoose from 'mongoose';
 import kafka from './kafka';
 import { AuthorModel, BookModel, GenreModel } from 'nivclones-ilog-models';
-import { handleWrite, parseMessage } from './utils';
-import { Operation } from './utils';
+import { handleWrite, parseMessage, Operation } from './utils';
 
 const startServer = async () => {
   /* Connect to monbo database */
