@@ -1,32 +1,26 @@
 import { Context } from 'koa';
 import Router from 'koa-router';
 import { Controller } from '.';
-import { Genre, GenreModel, BookModel } from 'nivclones-ilog-models';
+import genreService from '../services/GenreService';
 
 export const GenreController: Controller = (router: Router) => {
   router.get('/genres', async (ctx: Context) => {
-    const payload = await GenreModel.find();
-    ctx.body = payload;
+    ctx.body = genreService.show();
   });
 
   router.get('/books/:id/genres', async (ctx: Context) => {
-    const id: string = ctx.params.id;
-    ctx.body = await BookModel.findById(id, 'genres');
+    ctx.body = genreService.showGenres(ctx);
   });
 
   router.post('/genres', async (ctx: Context) => {
-    const body: Genre = ctx.request.body;
-    ctx.body = await GenreModel.create(body);
+    ctx.body = genreService.create(ctx);
   });
 
   router.put('/genres/:id', async (ctx: Context) => {
-    const body: Genre = ctx.request.body;
-    const id: string = ctx.params.id;
-    ctx.body = await GenreModel.findByIdAndUpdate(id, body);
+    ctx.body = genreService.update(ctx);
   });
 
   router.delete('/genres/:id', async (ctx: Context) => {
-    const id: string = ctx.params.id;
-    ctx.body = await GenreModel.findByIdAndDelete(id);
+    ctx.body = genreService.delete(ctx);
   });
 };
