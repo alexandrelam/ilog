@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import kafka from './kafka';
-import { AuthorModel } from 'nivclones-ilog-models';
+import AuthorService from './services/AuthorService';
+import { parseMessage } from './utils';
+import { Operation } from './utils';
 
 const startServer = async () => {
   /* Connect to monbo database */
@@ -8,16 +10,17 @@ const startServer = async () => {
   const consumer = kafka.consumer({ groupId: 'write-group' });
 
   await consumer.connect();
-  await consumer.subscribe({ topic: 'create', fromBeginning: true });
+  await consumer.subscribe({ topic: 'book', fromBeginning: true });
 
   await consumer.run({
-    eachMessage: async ({ topic, partition, message }) => {
+    eachMessage: async ({ message }) => {
       console.log(`Message received: ${message.value.toString()}`);
-      const subject = JSON.parse(message.value.toString()).subject;
-      const body = JSON.parse(message.value.toString()).body;
-      if (subject === 'author') {
-        console.log('create author');
-        await AuthorModel.create(body);
+      const { subject, body } = parseMessage(message);
+      const modelName = subject.split('.')[0];
+      const operation: Operation = subject.split('.')[1];
+      switch (modelName) {
+        case 'author':
+          AuthorService(operation, body);
       }
     },
   });
