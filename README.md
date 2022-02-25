@@ -59,7 +59,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/alexandrelam)
+[![Product Name Screen Shot][product-screenshot]](https://user-images.githubusercontent.com/25727549/155735201-e93b111f-ef9f-4453-9515-38f1bf81a46c.png)
 
 The goal of this project is to learn how to write a backend app using Koa. This app should be a RESTful API that can handle books, authors and genre in a MongDB database.
 
