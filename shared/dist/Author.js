@@ -17,10 +17,6 @@ __decorate([
     (0, typegoose_1.prop)({ required: true }),
     __metadata("design:type", String)
 ], Author.prototype, "name", void 0);
-__decorate([
-    (0, typegoose_1.prop)(),
-    __metadata("design:type", Array)
-], Author.prototype, "books", void 0);
 exports.Author = Author;
 exports.AuthorModel = (0, typegoose_1.getModelForClass)(Author);
 //# sourceMappingURL=Author.js.map
