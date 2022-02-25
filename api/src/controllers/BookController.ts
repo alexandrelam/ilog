@@ -12,10 +12,6 @@ export const BookController: Controller = (
     ctx.body = await bookService.show();
   });
 
-  router.get('/authors/:authorID/books', async (ctx: Context) => {
-    ctx.body = await bookService.showBooks(ctx);
-  });
-
   router.post('/books', async (ctx: Context) => {
     ctx.body = await bookService.create(ctx, producer);
   });

@@ -13,11 +13,6 @@ export default {
     return await BookModel.find();
   },
 
-  showBooks: async function (ctx: Context) {
-    const authorID = ctx.params.authorID;
-    return await AuthorModel.findById(authorID, 'books');
-  },
-
   create: async function (ctx: Context, producer: Producer) {
     const body: Book = ctx.request.body;
     const authorId: string = ctx.request.body.author;
