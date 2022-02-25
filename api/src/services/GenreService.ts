@@ -8,9 +8,9 @@ export default {
     return await GenreModel.find();
   },
 
-  showGenres: async function (ctx: Context) {
-    const id: string = ctx.params.id;
-    return await BookModel.findById(id, 'genres');
+  showBooks: async function (ctx: Context) {
+    const genreID = ctx.params.genreID;
+    return await BookModel.find({ 'genres._id': genreID });
   },
 
   create: async function (ctx: Context, producer: Producer) {

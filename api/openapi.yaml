@@ -261,6 +261,25 @@ paths:
         '200':
           schema:
             '$ref': '#/definitions/Genre'
+  '/genres/{GenreID}/books':
+    get:
+      tags:
+        - Genre
+      summary: Get list of all books with a specific genre
+      parameters:
+        - name: 'genreID'
+          description: 'Genre id'
+          required: true
+          type: 'string'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Get list of all books with a specific genre
+          schema:
+            type: 'array'
+            items:
+              '$ref': '#/definitions/Book'
 
   '/wordle':
     get:

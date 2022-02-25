@@ -1,4 +1,4 @@
-import { Author, AuthorModel } from 'nivclones-ilog-models';
+import { Author, AuthorModel, BookModel } from 'nivclones-ilog-models';
 import { Context } from 'koa';
 import { Producer } from 'kafkajs';
 import { send } from '../kafka';
@@ -6,6 +6,11 @@ import { send } from '../kafka';
 export default {
   show: async function () {
     return await AuthorModel.find();
+  },
+
+  showBooks: async function (ctx: Context) {
+    const authorID = ctx.params.authorID;
+    return await BookModel.find({ 'author._id': authorID });
   },
 
   create: async function (ctx: Context, producer: Producer) {

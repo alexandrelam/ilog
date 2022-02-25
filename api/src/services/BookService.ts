@@ -13,9 +13,9 @@ export default {
     return await BookModel.find();
   },
 
-  showBooks: async function (ctx: Context) {
-    const authorID = ctx.params.authorID;
-    return await AuthorModel.findById(authorID, 'books');
+  showGenres: async function (ctx: Context) {
+    const id: string = ctx.params.id;
+    return await BookModel.findById(id, 'genres');
   },
 
   create: async function (ctx: Context, producer: Producer) {
@@ -28,11 +28,8 @@ export default {
     body.genres = genres;
     const author = await AuthorModel.findById(authorId);
     body.author = author;
-    const createdBook = new BookModel(body);
-    author.books = [...author.books, createdBook.id];
-    await author.save();
     send(producer, 'book.create', body);
-    return createdBook;
+    return new BookModel(body);
   },
 
   update: async function (ctx: Context, producer: Producer) {
