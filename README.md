@@ -213,4 +213,4 @@ Use this space to list resources you find helpful and would like to give credit 
 [issues-url]: https://github.com/alexandrelam/ilog/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/alexandrelam/ilog/blob/main/LICENSE
-[product-screenshot]: https://user-images.githubusercontent.com/25727549/153517319-3606ffec-5b77-46db-b133-595e0222ea18.png
+[product-screenshot]: https://user-images.githubusercontent.com/25727549/155723634-2c06a0d3-4723-473e-8a7c-4e90300a029c.png
