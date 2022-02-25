@@ -8,11 +8,6 @@ export default {
     return await GenreModel.find();
   },
 
-  showGenres: async function (ctx: Context) {
-    const id: string = ctx.params.id;
-    return await BookModel.findById(id, 'genres');
-  },
-
   create: async function (ctx: Context, producer: Producer) {
     const body: Genre = ctx.request.body;
     send(producer, 'genre.create', body);

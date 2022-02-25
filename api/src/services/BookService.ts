@@ -13,6 +13,11 @@ export default {
     return await BookModel.find();
   },
 
+  showGenres: async function (ctx: Context) {
+    const id: string = ctx.params.id;
+    return await BookModel.findById(id, 'genres');
+  },
+
   create: async function (ctx: Context, producer: Producer) {
     const body: Book = ctx.request.body;
     const authorId: string = ctx.request.body.author;

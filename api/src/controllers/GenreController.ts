@@ -12,10 +12,6 @@ export const GenreController: Controller = (
     ctx.body = await genreService.show();
   });
 
-  router.get('/books/:id/genres', async (ctx: Context) => {
-    ctx.body = await genreService.showGenres(ctx);
-  });
-
   router.post('/genres', async (ctx: Context) => {
     ctx.body = await genreService.create(ctx, producer);
   });
