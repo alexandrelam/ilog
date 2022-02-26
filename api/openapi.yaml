@@ -98,6 +98,7 @@ paths:
       summary: Delete a book
       parameters:
         - name: 'bookID'
+          in: path
           description: 'Book id to delete'
           required: true
           type: 'string'
@@ -114,6 +115,7 @@ paths:
       summary: Get list of all genres from a book
       parameters:
         - name: 'bookID'
+          in: path
           description: 'Book id'
           required: true
           type: 'string'
@@ -184,8 +186,9 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: 'authorId'
-          description: 'Author id to delete'
+        - name: 'name'
+          in: path
+          description: 'author name'
           required: true
           type: 'string'
       responses:
@@ -216,6 +219,7 @@ paths:
       parameters:
         - name: 'authorID'
           description: 'Author id'
+          in: path
           required: true
           type: 'string'
         - in: query
@@ -281,6 +285,7 @@ paths:
       summary: Update a new genre
       parameters:
         - name: 'id'
+          in: path
           description: 'Genre id'
           required: true
           type: 'string'
@@ -316,6 +321,7 @@ paths:
       summary: Get list of all books with a specific genre
       parameters:
         - name: 'genreID'
+          in: path
           description: 'Genre id'
           required: true
           type: 'string'
