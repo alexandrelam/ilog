@@ -9,7 +9,7 @@ export const AuthorController: Controller = (
   producer: Producer
 ) => {
   router.get('/authors', async (ctx: Context) => {
-    ctx.body = await authorService.show();
+    ctx.body = await authorService.show(ctx);
   });
 
   router.get('/authors/:authorID/books', async (ctx: Context) => {

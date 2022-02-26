@@ -13,6 +13,17 @@ paths:
       tags:
         - Book
       summary: Get list of all books
+      parameters:
+        - in: query
+          name: skip
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of items to return
       produces:
         - application/json
       responses:
@@ -87,6 +98,7 @@ paths:
       summary: Delete a book
       parameters:
         - name: 'bookID'
+          in: path
           description: 'Book id to delete'
           required: true
           type: 'string'
@@ -103,9 +115,20 @@ paths:
       summary: Get list of all genres from a book
       parameters:
         - name: 'bookID'
+          in: path
           description: 'Book id'
           required: true
           type: 'string'
+        - in: query
+          name: skip
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of items to return
       produces:
         - application/json
       responses:
@@ -120,6 +143,17 @@ paths:
       tags:
         - Author
       summary: Get list of all authors
+      parameters:
+        - in: query
+          name: skip
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of items to return
       produces:
         - application/json
       responses:
@@ -152,8 +186,9 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: 'authorId'
-          description: 'Author id to delete'
+        - name: 'name'
+          in: path
+          description: 'author name'
           required: true
           type: 'string'
       responses:
@@ -184,8 +219,19 @@ paths:
       parameters:
         - name: 'authorID'
           description: 'Author id'
+          in: path
           required: true
           type: 'string'
+        - in: query
+          name: skip
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of items to return
       produces:
         - application/json
       responses:
@@ -201,10 +247,16 @@ paths:
         - Genre
       summary: Delete author
       parameters:
-        - name: 'authorId'
-          description: 'Author id to delete'
-          required: true
-          type: 'string'
+        - in: query
+          name: skip
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of items to return
       produces:
         - application/json
       responses:
@@ -233,6 +285,7 @@ paths:
       summary: Update a new genre
       parameters:
         - name: 'id'
+          in: path
           description: 'Genre id'
           required: true
           type: 'string'
@@ -268,9 +321,20 @@ paths:
       summary: Get list of all books with a specific genre
       parameters:
         - name: 'genreID'
+          in: path
           description: 'Genre id'
           required: true
           type: 'string'
+        - in: query
+          name: skip
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of items to return
       produces:
         - application/json
       responses:

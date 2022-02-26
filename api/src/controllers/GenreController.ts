@@ -9,7 +9,7 @@ export const GenreController: Controller = (
   producer: Producer
 ) => {
   router.get('/genres', async (ctx: Context) => {
-    ctx.body = await genreService.show();
+    ctx.body = await genreService.show(ctx);
   });
 
   router.get('/genres/:genreID/books', async (ctx: Context) => {
