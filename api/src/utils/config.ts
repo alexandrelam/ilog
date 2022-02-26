@@ -29,6 +29,17 @@ export const configureError = (app: Application) => {
   });
 };
 
+export const configurePagination = (app: Application) => {
+  app.use(async (ctx: Context, next: Next) => {
+    const query = ctx.request.query;
+    const limit = query.limit ? parseInt(query.limit[0]) : 100;
+    const skip = query.skip ? parseInt(query.skip[0]) : 0;
+    ctx.limit = limit;
+    ctx.skip = skip;
+    await next();
+  });
+};
+
 export const configureHeader = (app: Application) => {
   app.use(async (ctx: Context, next: Next) => {
     ctx.set('Access-Control-Allow-Origin', '*');
