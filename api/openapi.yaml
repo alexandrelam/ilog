@@ -13,6 +13,17 @@ paths:
       tags:
         - Book
       summary: Get list of all books
+      parameters:
+        - in: query
+          name: skip
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of items to return
       produces:
         - application/json
       responses:
@@ -106,6 +117,16 @@ paths:
           description: 'Book id'
           required: true
           type: 'string'
+        - in: query
+          name: skip
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of items to return
       produces:
         - application/json
       responses:
@@ -120,6 +141,17 @@ paths:
       tags:
         - Author
       summary: Get list of all authors
+      parameters:
+        - in: query
+          name: skip
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of items to return
       produces:
         - application/json
       responses:
@@ -186,6 +218,16 @@ paths:
           description: 'Author id'
           required: true
           type: 'string'
+        - in: query
+          name: skip
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of items to return
       produces:
         - application/json
       responses:
@@ -201,10 +243,16 @@ paths:
         - Genre
       summary: Delete author
       parameters:
-        - name: 'authorId'
-          description: 'Author id to delete'
-          required: true
-          type: 'string'
+        - in: query
+          name: skip
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of items to return
       produces:
         - application/json
       responses:
@@ -271,6 +319,16 @@ paths:
           description: 'Genre id'
           required: true
           type: 'string'
+        - in: query
+          name: skip
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of items to return
       produces:
         - application/json
       responses:
