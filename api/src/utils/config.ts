@@ -29,13 +29,21 @@ export const configureError = (app: Application) => {
   });
 };
 
+type SortDirection = 'asc' | 'desc' | 'ascending' | 'descending' | -1 | 1;
+
 export const configurePagination = (app: Application) => {
   app.use(async (ctx: Context, next: Next) => {
     const query = ctx.request.query;
-    const limit = query.limit ? parseInt(query.limit[0]) : 100;
-    const skip = query.skip ? parseInt(query.skip[0]) : 0;
+    const limit: number = query.limit ? parseInt(query.limit[0]) : 100;
+    const skip: number = query.skip ? parseInt(query.skip[0]) : 0;
+    const sortDirection: SortDirection = query.sortdirection
+      ? (query.sortdirection as SortDirection)
+      : 'asc';
+    const sortField = query.sortfield ? query.sortfield : 'name';
     ctx.limit = limit;
     ctx.skip = skip;
+    ctx.sortDirection = sortDirection;
+    ctx.sortField = sortField;
     await next();
   });
 };

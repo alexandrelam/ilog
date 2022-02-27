@@ -12,7 +12,8 @@ export default {
   show: async function (ctx: Context) {
     return await BookModel.find()
       .limit(ctx.limit)
-      .skip(ctx.limit * ctx.skip);
+      .skip(ctx.limit * ctx.skip)
+      .sort([[ctx.sortField, ctx.sortDirection]]);
   },
 
   showGenres: async function (ctx: Context) {
