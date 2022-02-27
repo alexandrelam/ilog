@@ -23,7 +23,18 @@ paths:
           name: limit
           schema:
             type: integer
-          description: The numbers of items to return
+        - in: query
+          name: sortdirection
+          schema:
+            type: string
+            enum: ['asc', 'desc', 'ascending', 'descending']
+          description: Sorting direction (asc, desc, ascending, descending)
+        - in: query
+          name: sortfield
+          description: Field to sort (name, numberOfPage, author, genres)
+          schema:
+            type: string
+            enum: ['name', 'numberOfPage', 'author', 'genres']
       produces:
         - application/json
       responses:
@@ -129,6 +140,18 @@ paths:
           schema:
             type: integer
           description: The numbers of items to return
+        - in: query
+          name: sortdirection
+          schema:
+            type: string
+            enum: ['asc', 'desc', 'ascending', 'descending']
+          description: Sorting direction (asc, desc, ascending, descending)
+        - in: query
+          name: sortfield
+          description: Field to sort (name, numberOfPage, author, genres)
+          schema:
+            type: string
+            enum: ['name', 'numberOfPage', 'author', 'genres']
       produces:
         - application/json
       responses:
@@ -154,6 +177,18 @@ paths:
           schema:
             type: integer
           description: The numbers of items to return
+        - in: query
+          name: sortdirection
+          schema:
+            type: string
+            enum: ['asc', 'desc', 'ascending', 'descending']
+          description: Sorting direction (asc, desc, ascending, descending)
+        - in: query
+          name: sortfield
+          description: Field to sort (name, numberOfPage, author, genres)
+          schema:
+            type: string
+            enum: ['name', 'numberOfPage', 'author', 'genres']
       produces:
         - application/json
       responses:
@@ -232,6 +267,18 @@ paths:
           schema:
             type: integer
           description: The numbers of items to return
+        - in: query
+          name: sortdirection
+          schema:
+            type: string
+            enum: ['asc', 'desc', 'ascending', 'descending']
+          description: Sorting direction (asc, desc, ascending, descending)
+        - in: query
+          name: sortfield
+          description: Field to sort (name, numberOfPage, author, genres)
+          schema:
+            type: string
+            enum: ['name', 'numberOfPage', 'author', 'genres']
       produces:
         - application/json
       responses:
@@ -257,6 +304,18 @@ paths:
           schema:
             type: integer
           description: The numbers of items to return
+        - in: query
+          name: sortdirection
+          schema:
+            type: string
+            enum: ['asc', 'desc', 'ascending', 'descending']
+          description: Sorting direction (asc, desc, ascending, descending)
+        - in: query
+          name: sortfield
+          description: Field to sort (name, numberOfPage, author, genres)
+          schema:
+            type: string
+            enum: ['name', 'numberOfPage', 'author', 'genres']
       produces:
         - application/json
       responses:
@@ -335,6 +394,18 @@ paths:
           schema:
             type: integer
           description: The numbers of items to return
+        - in: query
+          name: sortdirection
+          schema:
+            type: string
+            enum: ['asc', 'desc', 'ascending', 'descending']
+          description: Sorting direction (asc, desc, ascending, descending)
+        - in: query
+          name: sortfield
+          description: Field to sort (name, numberOfPage, author, genres)
+          schema:
+            type: string
+            enum: ['name', 'numberOfPage', 'author', 'genres']
       produces:
         - application/json
       responses:
