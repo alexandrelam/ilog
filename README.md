@@ -61,7 +61,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://user-images.githubusercontent.com/25727549/155735201-e93b111f-ef9f-4453-9515-38f1bf81a46c.png)
 
-The goal of this project is to learn how to write a backend app using Koa. This app should be a RESTful API that can handle books, authors and genre in a MongDB database.
+The goal of this project is to learn how to write a backend app using Koa. This app should be a RESTful API that can handle books, authors and genre in a MongoDB database.
 
 To spice up this project a little bit, we decided to extend the scope of the project and base it on microservices. We tried to follow a CQRS and event sourcing ideology. We used Koa for our query and write service, Kafka as our event store and MongoDB for our database. We also added KafkaDrop and OpenApi documentation.
 
@@ -124,7 +124,7 @@ _Below is an example of how you can install the dependancies and set up the app.
    docker-compose up
    ```
 
-   _Make sure no other app are running on port 4000, 9000, 2181, 27017, 29092._
+   _Make sure no other app are running on port 4000, 4001, 4002, 9000, 2181, 27017, 29092._
    _If the app is not starting because of kafka not initiating fast enough just shutdown the servers and docker-compose back up again._
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -144,9 +144,10 @@ _For more examples, please refer to the [OpenAPI documentation](http://localhost
 ## Roadmap
 
 - [x] Write a cool readme
+- [x] Convert whole app to cqrs
 - [ ] Await group 1 to contact us and build something cool
-- [ ] Make a better seeder for wordle
-- [ ] Create a banking service for CQRS because it's a better example than authors!
+- [ ] ~~Make a better seeder for wordle~~
+- [ ] ~~Create a banking service for CQRS because it's a better example than authors!~~
 
 See the [open issues](https://github.com/alexandrelam/ilog/issues) for a full list of proposed features (and known issues).
 
