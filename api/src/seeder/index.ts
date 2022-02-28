@@ -1,6 +1,7 @@
 import kafka, { send } from '../kafka';
 import mongoose from 'mongoose';
-import { createAuthor } from '../factory';
+import { createAuthor, createGenre } from '../factory';
+import { AuthorModel, GenreModel } from 'nivclones-ilog-models';
 
 const seeder = async () => {
   /* Connect to monbo database */
@@ -9,9 +10,17 @@ const seeder = async () => {
   const producer = kafka.producer();
   await producer.connect();
 
-  for (let i = 0; i < 10; i++) {
+  await AuthorModel.deleteMany();
+  for (let i = 0; i < 5; i++) {
     const author = createAuthor();
     send(producer, 'author.create', author);
+  }
+
+  await GenreModel.deleteMany();
+  for (let i = 0; i < 5; i++) {
+    const genre = createGenre();
+    console.log(genre);
+    send(producer, 'genre.create', genre);
   }
 };
 
