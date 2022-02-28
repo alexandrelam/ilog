@@ -25,13 +25,13 @@ export default {
 
   create: async function (ctx: Context, producer: Producer) {
     const body: Book = ctx.request.body;
-    const authorId: string = ctx.request.body.author;
+    const authorID: string = ctx.request.body.author;
     const genresID: [string] = ctx.request.body.genres;
     const genres = await Promise.all(
       genresID.map(async (genreid) => await GenreModel.findById(genreid))
     );
     body.genres = genres;
-    const author = await AuthorModel.findById(authorId);
+    const author = await AuthorModel.findById(authorID);
     body.author = author;
     send(producer, 'book.create', body);
     return new BookModel(body);
@@ -40,13 +40,15 @@ export default {
   update: async function (ctx: Context, producer: Producer) {
     const body: Book = ctx.request.body;
     const id: string = ctx.params.id;
-    const authorId: string = ctx.request.body.author;
+    const authorID: string = ctx.request.body.author;
     const genresID: [string] = ctx.request.body.genres;
-    const genres = await Promise.all(
-      genresID.map(async (genreid) => await GenreModel.findById(genreid))
-    );
+    const genres =
+      genresID &&
+      (await Promise.all(
+        genresID.map(async (genreid) => await GenreModel.findById(genreid))
+      ));
     body.genres = genres;
-    body.author = await AuthorModel.findById(authorId);
+    body.author = authorID && (await AuthorModel.findById(authorID));
     send(producer, 'book.update', { id, ...body });
     return new BookModel(body);
   },

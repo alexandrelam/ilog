@@ -18,7 +18,7 @@ export async function handleWrite(model, operation: Operation, body) {
       break;
     case 'update':
       console.log('update');
-      await model.findByIdAndUpdate(body.id, body);
+      await model.findOneAndUpdate({ _id: body.id }, body);
       break;
     case 'delete':
       console.log('delete');
