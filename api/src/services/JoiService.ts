@@ -1,4 +1,4 @@
-import { JoiModel } from 'nivclones-ilog-models';
+import { JoiModel, Joi } from 'nivclones-ilog-models';
 import { Context } from 'koa';
 
 export default {
@@ -7,5 +7,10 @@ export default {
       .limit(ctx.limit)
       .skip(ctx.limit * ctx.skip)
       .sort([[ctx.sortField, ctx.sortDirection]]);
+  },
+
+  create: async function (ctx: Context) {
+    const body: Joi = ctx.request.body;
+    return await JoiModel.create(body);
   },
 };

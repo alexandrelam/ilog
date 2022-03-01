@@ -7,4 +7,8 @@ export const JoiController: Controller = (router: Router) => {
   router.get('/metadata', async (ctx: Context) => {
     ctx.body = await joiService.index(ctx);
   });
+
+  router.post('/metadata', async (ctx: Context) => {
+    ctx.body = await joiService.create(ctx);
+  });
 };
