@@ -8,6 +8,10 @@ export const JoiController: Controller = (router: Router) => {
     ctx.body = await joiService.index(ctx);
   });
 
+  router.get('/metadata/:metadataID', async (ctx: Context) => {
+    ctx.body = await joiService.show(ctx);
+  });
+
   router.post('/metadata', async (ctx: Context) => {
     ctx.body = await joiService.create(ctx);
   });
