@@ -15,6 +15,7 @@ import {
   BookController,
   GenreController,
   WordleController,
+  JoiController,
 } from './controllers';
 import { registerController } from './utils/registerController';
 import { koaSwagger } from 'koa2-swagger-ui';
@@ -47,7 +48,13 @@ const startServer = async () => {
 
   registerController(
     router,
-    [BookController, GenreController, AuthorController, WordleController],
+    [
+      BookController,
+      GenreController,
+      AuthorController,
+      WordleController,
+      JoiController,
+    ],
     producer
   );
 
