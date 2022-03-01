@@ -47,6 +47,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#seeder">Seeder</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -136,6 +137,14 @@ _Below is an example of how you can install the dependancies and set up the app.
 Use Postman to test the api! (https://www.postman.com/)
 
 _For more examples, please refer to the [OpenAPI documentation](http://localhost:4000/docs)_
+
+## Seeder
+
+To seed the db don't forget to execute the command in the container.
+
+```sh
+docker exec -it fc7e74e0993d npm run seed
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
