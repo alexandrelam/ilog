@@ -20,7 +20,7 @@ export default {
 
   show: async function (ctx: Context) {
     const genreID = ctx.params.genreID;
-    return await GenreModel.findOne({ _id: genreID });
+    return await GenreModel.findById(genreID);
   },
 
   create: async function (ctx: Context, producer: Producer) {
