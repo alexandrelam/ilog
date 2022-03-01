@@ -1,4 +1,4 @@
-import { GenreModel, Genre, BookModel } from 'nivclones-ilog-models';
+import { GenreModel, Genre } from 'nivclones-ilog-models';
 import { Context } from 'koa';
 import { Producer } from 'kafkajs';
 import { send } from '../kafka';
