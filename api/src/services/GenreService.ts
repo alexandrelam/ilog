@@ -20,8 +20,10 @@ export default {
 
   create: async function (ctx: Context, producer: Producer) {
     const body: Genre = ctx.request.body;
+    const genre = new GenreModel(body);
+    await genre.validate();
     send(producer, 'genre.create', body);
-    return new GenreModel(body);
+    return genre;
   },
 
   update: async function (ctx: Context, producer: Producer) {
