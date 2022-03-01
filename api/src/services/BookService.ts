@@ -9,18 +9,23 @@ import { send } from '../kafka';
 import { Producer } from 'kafkajs';
 
 export default {
-  show: async function (ctx: Context) {
+  index: async function (ctx: Context) {
     return await BookModel.find()
       .limit(ctx.limit)
       .skip(ctx.limit * ctx.skip)
       .sort([[ctx.sortField, ctx.sortDirection]]);
   },
 
-  showGenres: async function (ctx: Context) {
+  indexGenres: async function (ctx: Context) {
     const id: string = ctx.params.id;
     return await BookModel.findById(id, 'genres')
       .limit(ctx.limit)
       .skip(ctx.limit * ctx.skip);
+  },
+
+  show: async function (ctx: Context) {
+    const id: string = ctx.params.id;
+    return await BookModel.findById(id);
   },
 
   create: async function (ctx: Context, producer: Producer) {

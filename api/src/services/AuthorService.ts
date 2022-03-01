@@ -4,18 +4,23 @@ import { Producer } from 'kafkajs';
 import { send } from '../kafka';
 
 export default {
-  show: async function (ctx: Context) {
+  index: async function (ctx: Context) {
     return await AuthorModel.find()
       .limit(ctx.limit)
       .skip(ctx.limit * ctx.skip)
       .sort([[ctx.sortField, ctx.sortDirection]]);
   },
 
-  showBooks: async function (ctx: Context) {
+  indexBooks: async function (ctx: Context) {
     const authorID = ctx.params.authorID;
     return await BookModel.find({ 'author._id': authorID })
       .limit(ctx.limit)
       .skip(ctx.limit * ctx.skip);
+  },
+
+  show: async function (ctx: Context) {
+    const authorID = ctx.params.authorID;
+    return await AuthorModel.findById(authorID);
   },
 
   create: async function (ctx: Context, producer: Producer) {

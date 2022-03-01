@@ -9,11 +9,15 @@ export const GenreController: Controller = (
   producer: Producer
 ) => {
   router.get('/genres', async (ctx: Context) => {
-    ctx.body = await genreService.show(ctx);
+    ctx.body = await genreService.index(ctx);
   });
 
   router.get('/genres/:genreID/books', async (ctx: Context) => {
-    ctx.body = await genreService.showBooks(ctx);
+    ctx.body = await genreService.indexBooks(ctx);
+  });
+
+  router.get('/genres/:genreID', async (ctx: Context) => {
+    ctx.body = await genreService.show(ctx);
   });
 
   router.post('/genres', async (ctx: Context) => {

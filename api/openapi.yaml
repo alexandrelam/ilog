@@ -73,6 +73,17 @@ paths:
           schema:
             '$ref': '#/definitions/Book'
   '/books/{bookID}':
+    get:
+      tags:
+        - Book
+      summary: Get one book by id
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Get one book by id
+          schema:
+            '$ref': '#/definitions/Book'
     put:
       tags:
         - Book
@@ -214,6 +225,17 @@ paths:
           schema:
             '$ref': '#/definitions/Author'
   '/authors/{authorID}':
+    get:
+      tags:
+        - Author
+      summary: Get one author by id
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Get one author by id
+          schema:
+            '$ref': '#/definitions/Author'
     put:
       tags:
         - Author
@@ -338,6 +360,17 @@ paths:
           schema:
             '$ref': '#/definitions/Genre'
   '/genres/{GenreID}':
+    get:
+      tags:
+        - Genre
+      summary: Get one genre by id
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Get one genre by id
+          schema:
+            '$ref': '#/definitions/Genre'
     put:
       tags:
         - Genre
