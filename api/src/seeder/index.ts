@@ -1,27 +1,20 @@
-import kafka, { send } from '../kafka';
 import mongoose from 'mongoose';
-import { createAuthor, createGenre } from '../factory';
-import { AuthorModel, GenreModel } from 'nivclones-ilog-models';
+import { createBook, createAuthor, createGenre } from '../factory';
+import { BookModel, AuthorModel, GenreModel } from 'nivclones-ilog-models';
 
 const seeder = async () => {
   /* Connect to monbo database */
   await mongoose.connect('mongodb://mongo:27017/book');
 
-  const producer = kafka.producer();
-  await producer.connect();
-
+  await BookModel.deleteMany();
   await AuthorModel.deleteMany();
-  for (let i = 0; i < 5; i++) {
-    const author = createAuthor();
-    send(producer, 'author.create', author);
-  }
-
   await GenreModel.deleteMany();
   for (let i = 0; i < 5; i++) {
-    const genre = createGenre();
-    console.log(genre);
-    send(producer, 'genre.create', genre);
+    const author = await AuthorModel.create(createAuthor());
+    const genre = await GenreModel.create(createGenre());
+    const book = await BookModel.create(createBook(author, genre));
+    console.log(`created: ${book}`);
   }
 };
 
-seeder();
+seeder().then(() => console.log('Done!'));
