@@ -15,4 +15,12 @@ export const JoiController: Controller = (router: Router) => {
   router.post('/metadata', async (ctx: Context) => {
     ctx.body = await joiService.create(ctx);
   });
+
+  router.put('/metadata/:metadataID', async (ctx: Context) => {
+    ctx.body = await joiService.update(ctx);
+  });
+
+  router.delete('/metadata/:metadataID', async (ctx: Context) => {
+    ctx.body = await joiService.delete(ctx);
+  });
 };

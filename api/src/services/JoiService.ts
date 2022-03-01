@@ -18,4 +18,15 @@ export default {
     const body: Joi = ctx.request.body;
     return await JoiModel.create(body);
   },
+
+  update: async function (ctx: Context) {
+    const body: Joi = ctx.request.body;
+    const metadataID: string = ctx.params.metadataID;
+    return await JoiModel.findOneAndUpdate({ _id: metadataID }, body);
+  },
+
+  delete: async function (ctx: Context) {
+    const metadataID: string = ctx.params.metadataID;
+    return await JoiModel.findByIdAndDelete(metadataID);
+  },
 };
