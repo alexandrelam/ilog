@@ -31,7 +31,7 @@ export const configureError = (app: Application) => {
 
 type SortDirection = 'asc' | 'desc' | 'ascending' | 'descending' | -1 | 1;
 
-export const configurePagination = (app: Application) => {
+export const configureFilter = (app: Application) => {
   app.use(async (ctx: Context, next: Next) => {
     const query = ctx.request.query;
     const limit: number = query.limit ? parseInt(query.limit[0]) : 100;
