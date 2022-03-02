@@ -55,7 +55,7 @@ paths:
           description: 'Book author'
           required: true
           schema:
-            '$ref': '#/definitions/Book'
+            '$ref': '#/definitions/Author'
         - name: 'nbOfPage'
           description: 'Book number of pages'
           required: true
@@ -99,7 +99,7 @@ paths:
           description: 'Book author'
           required: true
           schema:
-            '$ref': '#/definitions/Book'
+            '$ref': '#/definitions/Author'
         - name: 'nbOfPage'
           description: 'Book number of pages'
           required: true
@@ -472,6 +472,123 @@ paths:
           schema:
             '$ref': '#/definitions/Wordle'
 
+  '/metadata':
+    get:
+      tags:
+        - Joi
+      summary: Get list of all metadata
+      parameters:
+        - in: query
+          name: skip
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+        - in: query
+          name: sortdirection
+          schema:
+            type: string
+            enum: ['asc', 'desc', 'ascending', 'descending']
+          description: Sorting direction (asc, desc, ascending, descending)
+        - in: query
+          name: sortfield
+          description: Field to sort (name, size, type, lastModified)
+          schema:
+            type: string
+            enum: ['name', 'size', 'type', 'lastModified']
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Get list of all metadata
+          schema:
+            '$ref': '#/definitions/Joi'
+    post:
+      tags:
+        - Joi
+      summary: Create a new metadata object
+      parameters:
+        - name: 'name'
+          description: 'Metadata title'
+          required: true
+          type: 'number'
+        - name: 'size'
+          description: 'Metadata size'
+          required: true
+        - name: 'type'
+          description: 'Metadata type'
+          required: true
+          type: 'string'
+        - name: 'lastModified'
+          description: 'Last time the file got modified'
+          required: true
+          type: 'number'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Get the newly created metadata object
+          schema:
+            '$ref': '#/definitions/Joi'
+  '/metadata/{metadataID}':
+    get:
+      tags:
+        - Joi
+      summary: Get one medatada object by id
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Get one metadata object by id
+          schema:
+            '$ref': '#/definitions/Joi'
+    put:
+      tags:
+        - Joi
+      summary: Update a metadata object
+      produces:
+        - application/json
+      parameters:
+        - name: 'name'
+          description: 'Metadata title'
+          required: true
+          type: 'number'
+        - name: 'size'
+          description: 'Metadata size'
+          required: true
+        - name: 'type'
+          description: 'Metadata type'
+          required: true
+          type: 'string'
+        - name: 'lastModified'
+          description: 'Last time the file got modified'
+          required: true
+          type: 'number'
+      responses:
+        '200':
+          description: Get the updated medatada object
+          schema:
+            '$ref': '#/definitions/Joi'
+    delete:
+      tags:
+        - Joi
+      summary: Delete a metadata object
+      parameters:
+        - name: 'metadataID'
+          in: path
+          description: 'Metadata object id to delete'
+          required: true
+          type: 'string'
+      produces:
+        - application/json
+      responses:
+        '200':
+          schema:
+            '$ref': '#/definitions/Joi'
+
 definitions:
   Author:
     type: 'object'
@@ -539,3 +656,28 @@ definitions:
         example: 'Harry Potter'
     xml:
       name: 'Wordle'
+  Joi:
+    type: 'object'
+    required:
+      - 'name'
+      - 'size'
+      - 'type'
+      - 'lastModified'
+    properties:
+      id:
+        type: 'string'
+        example: '6205901e95d74d5c9db5a094'
+      name:
+        type: 'string'
+        example: 'Harry Potter'
+      size:
+        type: 'number'
+        example: 6
+      type:
+        type: 'string'
+        example: 'video'
+      lastModified:
+        type: 'number'
+        example: 10
+    xml:
+      name: 'Joi'
