@@ -26,6 +26,7 @@ export default {
   create: async function (ctx: Context, producer: Producer) {
     const body: Author = ctx.request.body;
     const author = new AuthorModel(body);
+    await author.validate();
     send(producer, 'author.create', body);
     return author;
   },

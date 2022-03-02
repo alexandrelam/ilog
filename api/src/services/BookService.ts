@@ -38,8 +38,10 @@ export default {
     body.genres = genres;
     const author = await AuthorModel.findById(authorID);
     body.author = author;
+    const book = new BookModel(body);
+    await book.validate();
     send(producer, 'book.create', body);
-    return new BookModel(body);
+    return book;
   },
 
   update: async function (ctx: Context, producer: Producer) {
