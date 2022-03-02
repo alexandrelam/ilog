@@ -6,4 +6,4 @@ export declare class Book {
     numberOfPage: number;
     genres?: Genre[];
 }
-export declare const BookModel: import("@typegoose/typegoose").ReturnModelType<typeof Book, import("@typegoose/typegoose/lib/types").BeAnObject>;
+export declare const BookModel: any;
