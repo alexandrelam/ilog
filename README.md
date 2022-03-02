@@ -119,6 +119,9 @@ _Below is an example of how you can install the dependancies and set up the app.
    ```sh
    cd .. && cd write-service && npm install
    ```
+   ```sh
+   cd .. && cd shared && npm install
+   ```
 4. docker-compose up!
 
    ```sh
