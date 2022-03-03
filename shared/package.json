@@ -1,6 +1,6 @@
 {
   "name": "nivclones-ilog-models",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Models for ilog project",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

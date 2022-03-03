@@ -19,7 +19,7 @@
     "koa-router": "^10.1.1",
     "koa2-swagger-ui": "^5.3.0",
     "mongoose": "^6.2.1",
-    "nivclones-ilog-models": "^1.6.0",
+    "nivclones-ilog-models": "^1.7.0",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
