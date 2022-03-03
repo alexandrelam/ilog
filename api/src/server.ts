@@ -7,7 +7,7 @@ import {
   configureError,
   configureHeader,
   configureLogger,
-  configurePagination,
+  configureFilter,
 } from './utils/config';
 import mongoose from 'mongoose';
 import {
@@ -41,7 +41,7 @@ const startServer = async () => {
   configureError(app);
   configureHeader(app);
   configureLogger(app);
-  configurePagination(app);
+  configureFilter(app);
 
   const producer = kafka.producer();
   await producer.connect();
